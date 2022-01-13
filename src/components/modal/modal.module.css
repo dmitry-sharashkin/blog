@@ -1,0 +1,40 @@
+.form{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 900px;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 2;
+    padding: 20px;
+    background-color: #F5F5F5;
+    border: 1px solid black;
+    display: block;
+
+}
+input,textarea{
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 10px;
+    font-size: 18px;
+    padding: 5px;
+    display: block;
+    resize: none;
+}
+.danger{
+    color: red;
+    line-height: 1.1;
+    margin-top: 0;
+}
+.buttons{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+.buttons button{
+    margin-left: 10px;
+}
+.form textarea{
+    min-height: 150px;
+}

@@ -1,0 +1,10 @@
+
+.box{
+    display: flex;
+    flex-wrap: wrap;
+}
+.fixed{
+    position: fixed;
+    right: 30px;
+    bottom: 20px;
+}

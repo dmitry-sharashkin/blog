@@ -1,0 +1,14 @@
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.danger{
+    color: red;
+}
+.editForm{
+    margin-top: 20px;
+}
+.editForm textarea{
+min-height: 60vh;
+}
