@@ -53,10 +53,8 @@ const articlesSlice = createSlice({
         },
         deleteArticle(state, action) {
             state.articles.splice(action.payload, 1)
-
         },
         changeArticle(state, action) {
-            debugger
             state.articles.splice(action.payload.index, 1, action.payload.newArticle)
         },
         openModal(state) {

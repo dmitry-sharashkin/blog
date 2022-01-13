@@ -10,31 +10,37 @@ const Article = () => {
     const dispatch = useDispatch()
     const index = useParams()
     const article = useSelector((state) => state.articles.articles[index.index])
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit, formState: {errors}} = useForm({mode: 'onBlur'});
     const onSubmit = data => {
-        console.log(data)
         dispatch(changeArticle({
-            index: +index.index, newArticle: {header: data.header, content: data.content}
+            index: +index.index,
+            newArticle: {header: data.header, content: data.content}
         }))
         setEditMode(false)
     }
-
+    const deleteArticleQuestion = () => {
+        let question = window.confirm("Удалить Статью?")
+        if (question === true) {
+            dispatch(deleteArticle(+index.index))
+        }
+        setEditMode(false)
+    }
 
     if (editMode === true) {
         return <>
-            <button onClick={()=>setEditMode(false)}>назад</button>
+            <button onClick={() => setEditMode(false)}>назад</button>
             <form className={style.editForm} onSubmit={handleSubmit(onSubmit)}>
                 <h2>запись: {article?.header}</h2>
                 <input defaultValue={article?.header} {...register("header", {required: true})} />
                 <label className={style.danger}>
-                    {errors.header && <span>This field is required</span>}
+                    {errors.header && <span>Пожалуйста заполните поле</span>}
                 </label>
                 <textarea defaultValue={article?.content}  {...register("content", {required: true})} />
                 <div className={style.danger}>
-                    {errors.content && <span>This field is required</span>}
+                    {errors.content && <span>Пожалуйста заполните поле</span>}
                 </div>
                 <div className={style.buttons}>
-                    <button onClick={() => dispatch(deleteArticle(+index.index))} className='buttonRed'>Удалить</button>
+                    <a onClick={deleteArticleQuestion} className={`button buttonRed`}>Удалить</a>
                     <button type="submit">Сохранить</button>
                 </div>
             </form>
@@ -48,7 +54,7 @@ const Article = () => {
                 <h2>{article?.header}</h2>
                 <p>{article?.content}</p>
                 <div className={style.buttons}>
-                    <button onClick={() => dispatch(deleteArticle(+index.index))} className='buttonRed'>Удалить</button>
+                    <button onClick={deleteArticleQuestion} className='buttonRed'>Удалить</button>
                     <button onClick={() => setEditMode(true)}>Редактировать</button>
                 </div>
             </article>

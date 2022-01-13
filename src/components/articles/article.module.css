@@ -1,14 +1,17 @@
-.buttons{
+.buttons {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
 }
-.danger{
+
+.danger {
     color: red;
 }
-.editForm{
+
+.editForm {
     margin-top: 20px;
 }
-.editForm textarea{
-min-height: 60vh;
+
+.editForm textarea {
+    min-height: 60vh;
 }

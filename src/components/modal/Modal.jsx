@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 
 const Modal = () => {
     const dispatch = useDispatch()
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit, formState: {errors}} = useForm({mode: 'onBlur'});
     const onSubmit = data => {
         dispatch(addArticle({header: data.header, content: data.content}))
         dispatch(closeModal())
@@ -14,13 +14,13 @@ const Modal = () => {
 
     return (
         <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
-            <input defaultValue="test" {...register("header", {required: true})} />
+            <input defaultValue="Tittle" {...register("header", {required: true})} />
             <label className={style.danger}>
-                {errors.header && <span>This field is required</span>}
+                {errors.header && <span>Пожалуйста заполните поле</span>}
             </label>
-            <textarea {...register("content", {required: true})} />
+            <textarea defaultValue="Content" {...register("content", {required: true})} />
             <div className={style.danger}>
-                {errors.content && <span>This field is required</span>}
+                {errors.content && <span>Пожалуйста заполните поле</span>}
             </div>
             <div className={style.buttons}>
                 <button onClick={() => dispatch(closeModal())} className='buttonRed'>Отмена</button>

@@ -13,10 +13,13 @@ button, .button{
     background-color: #D9E8FB;
     border: 1px solid #9DAABF;
     border-radius: 2px;
-    padding: 10px;
-    font-weight: bolder;
-    min-width: 110px;
+    padding: 10px 22px;
+    font-weight: 700;
+    min-width: 140px;
     cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+
 }
 
 .buttonRed {
